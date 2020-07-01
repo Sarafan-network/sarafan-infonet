@@ -34,6 +34,10 @@
       bordered
       content-class="bg-grey-1"
     >
+
+<!-- VK Widget -->
+<div id="vk_auth"></div>
+
       <q-list>
       </q-list>
     </q-drawer>
@@ -103,6 +107,13 @@ export default {
         }
       ]
     }
+  },
+  methods: {},
+  mounted () {
+    console.log('mounted')
+    const VK = window.VK
+    VK.Widgets.Auth('vk_auth', { onAuth: function (data) { alert('user ' + data.uid + ' authorized') } })
+    // VK.Widgets.Auth("vk_auth", {"onAuth":function(data) {alert('user '+data['uid']+' authorized');}});
   }
 }
 </script>
