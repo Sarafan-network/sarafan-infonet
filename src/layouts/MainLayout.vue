@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -23,6 +23,7 @@
           round
           icon="room"
           aria-label="Menu"
+          @click="mapOpen = !mapOpen"
         />
         </div>
       </q-toolbar>
@@ -41,7 +42,13 @@
       <q-list>
       </q-list>
     </q-drawer>
-
+    <q-drawer
+      side="right"
+      v-model="mapOpen"
+      bordered
+      :width=500>
+      maps
+    </q-drawer>
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -61,6 +68,7 @@ export default {
 
   data () {
     return {
+      mapOpen: false,
       leftDrawerOpen: false,
       essentialLinks: [
         {
