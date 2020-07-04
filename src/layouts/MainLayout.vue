@@ -31,7 +31,6 @@
 
     <q-drawer
       v-model="leftDrawerOpen"
-      show-if-above
       bordered
       content-class="bg-grey-1"
     >
@@ -45,9 +44,12 @@
     <q-drawer
       side="right"
       v-model="mapOpen"
+      show-if-above
       bordered
       :width=500>
-      maps
+      <l-map ref="myMap">
+        <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+      </l-map>
     </q-drawer>
     <q-page-container>
       <router-view />
@@ -68,6 +70,8 @@ export default {
 
   data () {
     return {
+      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       mapOpen: false,
       leftDrawerOpen: false,
       essentialLinks: [
