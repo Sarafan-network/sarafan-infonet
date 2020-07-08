@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar>
+      <q-bar>
         <q-btn
           flat
           dense
@@ -11,11 +11,10 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
 
-        <q-toolbar-title>
-        <div>
+        <div class="float-left">
+        <tagsHeader/>
         </div>
-        </q-toolbar-title>
-
+        <q-space />
         <div>
         <q-btn
           flat
@@ -26,12 +25,13 @@
           @click="mapOpen = !mapOpen"
         />
         </div>
-      </q-toolbar>
+      </q-bar>
     </q-header>
 
     <q-drawer
       v-model="leftDrawerOpen"
       bordered
+      show-if-above
       content-class="bg-grey-1"
     >
 
@@ -46,7 +46,7 @@
       v-model="mapOpen"
       show-if-above
       bordered
-      :width=500>
+      :width=400>
       <q-splitter
         horizontal
         v-model="splitterMap"
@@ -69,13 +69,15 @@
 
 <script>
 import tagsList from 'components/tags'
+import tagsHeader from 'components/tagsHeader'
 
 export default {
   name: 'MainLayout',
   inputTag: '',
 
   components: {
-    tagsList
+    tagsList,
+    tagsHeader
   },
 
   data () {
