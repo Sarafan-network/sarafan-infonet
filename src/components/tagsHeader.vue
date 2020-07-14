@@ -6,6 +6,8 @@
     <q-chip removable>
       tag2
     </q-chip>
+    <q-input dense standout v-model="text" class="q-ml-sm float-right"
+      placeholder="filter/add tags" outlined />
   </div>
 </template>
 

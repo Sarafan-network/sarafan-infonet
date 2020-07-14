@@ -38,8 +38,7 @@
 <!-- VK Widget -->
 <div id="vk_auth"></div>
 
-      <q-list>
-      </q-list>
+      <SLeftMenu/>
     </q-drawer>
     <q-drawer
       side="right"
@@ -47,19 +46,7 @@
       show-if-above
       bordered
       :width=400>
-      <q-splitter
-        horizontal
-        v-model="splitterMap"
-        style="height:100%">
-        <template v-slot:before>
-      <tagsList/>
-        </template>
-        <template v-slot:after>
-      <l-map ref="myMap">
-        <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-      </l-map>
-        </template>
-      </q-splitter>
+      <Smap/>
     </q-drawer>
     <q-page-container>
       <router-view />
@@ -68,69 +55,24 @@
 </template>
 
 <script>
-import tagsList from 'components/tags'
 import tagsHeader from 'components/tagsHeader'
+import Smap from 'components/map'
+import SLeftMenu from 'components/leftMenu'
 
 export default {
   name: 'MainLayout',
   inputTag: '',
 
   components: {
-    tagsList,
-    tagsHeader
+    tagsHeader,
+    Smap,
+    SLeftMenu
   },
 
   data () {
     return {
-      splitterMap: 10,
-      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       mapOpen: false,
-      leftDrawerOpen: false,
-      essentialLinks: [
-        {
-          title: 'Docs',
-          caption: 'quasar.dev',
-          icon: 'school',
-          link: 'https://quasar.dev'
-        },
-        {
-          title: 'Github',
-          caption: 'github.com/quasarframework',
-          icon: 'code',
-          link: 'https://github.com/quasarframework'
-        },
-        {
-          title: 'Discord Chat Channel',
-          caption: 'chat.quasar.dev',
-          icon: 'chat',
-          link: 'https://chat.quasar.dev'
-        },
-        {
-          title: 'Forum',
-          caption: 'forum.quasar.dev',
-          icon: 'record_voice_over',
-          link: 'https://forum.quasar.dev'
-        },
-        {
-          title: 'Twitter',
-          caption: '@quasarframework',
-          icon: 'rss_feed',
-          link: 'https://twitter.quasar.dev'
-        },
-        {
-          title: 'Facebook',
-          caption: '@QuasarFramework',
-          icon: 'public',
-          link: 'https://facebook.quasar.dev'
-        },
-        {
-          title: 'Quasar Awesome',
-          caption: 'Community Quasar projects',
-          icon: 'favorite',
-          link: 'https://awesome.quasar.dev'
-        }
-      ]
+      leftDrawerOpen: false
     }
   },
   methods: {},

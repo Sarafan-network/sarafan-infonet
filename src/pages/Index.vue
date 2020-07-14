@@ -1,9 +1,9 @@
 <template>
   <q-page class="">
-    <q-input class="" v-model="input" label="" @change="onChange">
-      <template v-slot:prepend>
-        <q-icon name="input" />
-      </template>
+    <q-input outlined class="" v-model="input" @change="onChange"
+      placeholder="input text here"
+      filled
+      autogrow>
     </q-input>
   </q-page>
 </template>
