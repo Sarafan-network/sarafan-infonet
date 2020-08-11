@@ -61,6 +61,12 @@ export default {
       this.filter = ''
       this.$refs.filter.focus()
     }
+  },
+  mounted () {
+    console.log('leftmenu mounted')
+    this.$gun.get('tags').map().on((key, value) => {
+      console.log('gun.on', key, value)
+    })
   }
 }
 </script>
